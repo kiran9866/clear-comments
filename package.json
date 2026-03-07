@@ -1,0 +1,40 @@
+{
+  "name": "clear-comments",
+  "version": "0.1.0",
+  "description": "A lightweight CLI to remove JS/TS comments (usable as an npm package).",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "clear-comments": "dist/cli.js"
+  },
+  "keywords": [
+    "strip",
+    "comments",
+    "javascript",
+    "typescript",
+    "cli"
+  ],
+  "author": "kiran9866",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiran9866/clear-comments.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kiran9866/clear-comments/issues"
+  },
+  "homepage": "https://github.com/kiran9866/clear-comments#readme",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "prepare": "tsc -b",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.1",
+    "typescript": "^5.9.3",
+    "vitest": "^1.5.3"
+  }
+}
