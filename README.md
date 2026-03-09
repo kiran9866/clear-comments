@@ -9,7 +9,6 @@ A lightweight tool to remove comments from JavaScript/TypeScript files while pre
 - Removes `//` line comments and `/* */` block comments
 - Preserves comments inside strings, template literals, and regex patterns
 - Handles edge cases like regex literals after `return`, `throw`, etc.
-- Optional Rust native binding for performance (with automatic JS fallback)
 
 ## Install
 

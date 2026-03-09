@@ -1,6 +1,6 @@
 {
   "name": "remove-code-comments",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A lightweight CLI to remove JS/TS comments (usable as an npm package).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,6 @@
     "dist/**/*.d.ts",
     "!dist/**/*.test.js",
     "!dist/**/*.test.d.ts",
-    "native/index.js",
-    "native/*.node",
     "README.md"
   ],
   "keywords": [

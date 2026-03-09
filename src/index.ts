@@ -1,22 +1,6 @@
 import fs from "fs";
 import path from "path";
 
-type NativeApi = {
-  stripComments: (code: string) => string;
-};
-
-let nativeStripComments: ((code: string) => string) | null = null;
-
-try {
-  // dist/index.js -> ../native/index.js
-  const native = require("../native") as NativeApi;
-  if (native && typeof native.stripComments === "function") {
-    nativeStripComments = native.stripComments;
-  }
-} catch {
-  // Native module is optional. JS fallback remains the default path.
-}
-
 export const JS_EXTENSIONS: readonly string[] = [
   ".js",
   ".jsx",
@@ -27,18 +11,6 @@ export const JS_EXTENSIONS: readonly string[] = [
 ];
 
 export function stripComments(code: string): string {
-  if (nativeStripComments) {
-    try {
-      return nativeStripComments(code);
-    } catch {
-      // Fall through to JS implementation if native call fails.
-    }
-  }
-
-  return stripCommentsJs(code);
-}
-
-function stripCommentsJs(code: string): string {
   const len = code.length;
   const parts: string[] = [];
   let keepFrom = 0;
