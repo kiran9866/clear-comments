@@ -6,3 +6,4 @@ native/target/
 native/*.node
 native/*.so
 native/*.dylib
+native/*.d.ts
