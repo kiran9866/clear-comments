@@ -93,7 +93,7 @@ Options:
 Examples:
   remove-code-comments --dir src --all
   remove-code-comments --dir src --ignore "**/node_modules/**,**/*.test.ts"
-  remove-code-comments --all 1 2 3
+  remove-code-comments 1 2 3
 `);
 }
 
@@ -119,11 +119,27 @@ async function main() {
     return;
   }
 
+  // Check which files have comments
+  const fileInfo = files.map((file) => {
+    const content = fs.readFileSync(file, "utf8");
+    const stripped = stripComments(content);
+    const hasComments = content !== stripped;
+    const commentChars = content.length - stripped.length;
+    return { file, hasComments, commentChars };
+  });
+
+  const filesWithComments = fileInfo.filter((f) => f.hasComments);
+
   if (!opts.all && !opts.indices.length) {
-    console.log(`Found ${files.length} files:`);
-    files.forEach((file, idx) =>
-      console.log(`  ${idx + 1}. ${path.relative(process.cwd(), file)}`),
+    console.log(
+      `Found ${files.length} files (${filesWithComments.length} with comments):\n`,
     );
+    fileInfo.forEach((info, idx) => {
+      const indicator = info.hasComments ? "✓" : "○";
+      const relativePath = path.relative(process.cwd(), info.file);
+      const extra = info.hasComments ? ` (${info.commentChars} chars)` : "";
+      console.log(`  ${indicator} ${idx + 1}. ${relativePath}${extra}`);
+    });
 
     const selection = (
       await prompt(
