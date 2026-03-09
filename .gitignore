@@ -2,3 +2,7 @@ node_modules/
 dist/
 tsconfig.tsbuildinfo
 .env
+native/target/
+native/*.node
+native/*.so
+native/*.dylib
