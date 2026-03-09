@@ -1,23 +1,23 @@
-# clear-comments
+# remove-code-comments
 
 A small CLI tool to remove comments from JavaScript/TypeScript files.
 
 ## Install
 
 ```bash
-npm install -g clear-comments
+npm install -g remove-code-comments
 ```
 
 (or use via npx)
 
 ```bash
-npx clear-comments --help
+npx remove-code-comments --help
 ```
 
 ## Usage
 
 ```bash
-clear-comments --dir src --all
+remove-code-comments --dir src --all
 ```
 
 ### Options
