@@ -12,6 +12,8 @@
     "dist/**/*.d.ts",
     "!dist/**/*.test.js",
     "!dist/**/*.test.d.ts",
+    "native/index.js",
+    "native/*.node",
     "README.md"
   ],
   "keywords": [
@@ -36,15 +38,15 @@
   },
   "scripts": {
     "build": "tsc -b",
+    "build:native": "napi build --cargo-cwd native native",
+    "build:all": "npm run build && npm run build:native",
     "prepare": "tsc -b",
     "test": "vitest run"
   },
   "devDependencies": {
+    "@napi-rs/cli": "^2.18.4",
     "@types/node": "^20.11.1",
     "typescript": "^5.9.3",
     "vitest": "^1.5.3"
-  },
-  "dependencies": {
-    "@babel/parser": "^7.29.0"
   }
 }
