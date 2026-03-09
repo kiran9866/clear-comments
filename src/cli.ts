@@ -81,7 +81,7 @@ function parseArgs(argv: string[]): CLIOptions {
 }
 
 function showHelp() {
-  console.log(`Usage: clear-comments [options]
+  console.log(`Usage: remove-code-comments [options]
 
 Options:
   --dir, -d <folder>      Folder to scan (default: src)
@@ -91,9 +91,9 @@ Options:
   --help, -h              Show this help message
 
 Examples:
-  clear-comments --dir src --all
-  clear-comments --dir src --ignore "**/node_modules/**,**/*.test.ts"
-  clear-comments --all 1 2 3
+  remove-code-comments --dir src --all
+  remove-code-comments --dir src --ignore "**/node_modules/**,**/*.test.ts"
+  remove-code-comments --all 1 2 3
 `);
 }
 
