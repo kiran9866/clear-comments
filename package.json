@@ -1,6 +1,6 @@
 {
   "name": "remove-code-comments",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "A lightweight CLI to remove JS/TS comments (usable as an npm package).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,11 +15,19 @@
     "README.md"
   ],
   "keywords": [
+    "remove",
     "strip",
+    "delete",
+    "clean",
     "comments",
+    "comment-remover",
     "javascript",
     "typescript",
-    "cli"
+    "js",
+    "ts",
+    "minify",
+    "cli",
+    "tool"
   ],
   "author": "kiran9866",
   "license": "MIT",
