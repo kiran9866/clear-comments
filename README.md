@@ -40,3 +40,5 @@ npm run build
 This project is configured to publish from GitHub Actions when a new Git tag is created.
 
 Make sure `NPM_TOKEN` is configured in the repository secrets.
+# Update
+Published v0.1.0
