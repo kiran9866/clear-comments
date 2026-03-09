@@ -17,6 +17,26 @@ describe("stripComments", () => {
     const code = 'const s = "// not a comment";';
     expect(stripComments(code)).toBe(code);
   });
+
+  it("keeps regex literals intact while removing trailing comments", () => {
+    const code =
+      "const re = /https?:\\/\\/example\\.com\\/path/; // trailing\n";
+    expect(stripComments(code)).toBe(
+      "const re = /https?:\\/\\/example\\.com\\/path/; \n",
+    );
+  });
+
+  it("keeps template literal content that looks like comments", () => {
+    const code = "const t = `url // still text`; /* drop */ const n = 1;";
+    expect(stripComments(code)).toBe(
+      "const t = `url // still text`;  const n = 1;",
+    );
+  });
+
+  it("falls back for malformed input and still strips obvious comments", () => {
+    const code = 'const x = 1; // remove\nconst y = "unterminated';
+    expect(stripComments(code)).toBe('const x = 1; \nconst y = "unterminated');
+  });
 });
 
 describe("ignore patterns", () => {

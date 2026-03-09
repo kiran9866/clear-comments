@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { parse } from "@babel/parser";
 
 export const JS_EXTENSIONS: readonly string[] = [
   ".js",
@@ -11,6 +12,43 @@ export const JS_EXTENSIONS: readonly string[] = [
 ];
 
 export function stripComments(code: string): string {
+  // Prefer AST comment ranges for accurate stripping (handles strings/regex/template syntax).
+  try {
+    const ast = parse(code, {
+      sourceType: "unambiguous",
+      plugins: ["typescript", "jsx"],
+      ranges: true,
+    });
+
+    const comments = (ast.comments ?? [])
+      .map((c) => ({ start: c.start ?? 0, end: c.end ?? 0 }))
+      .filter((r) => Number.isInteger(r.start) && Number.isInteger(r.end))
+      .filter((r) => r.end > r.start)
+      .sort((a, b) => a.start - b.start);
+
+    if (!comments.length) {
+      return code;
+    }
+
+    let out = "";
+    let cursor = 0;
+    for (const { start, end } of comments) {
+      if (start < cursor) {
+        continue;
+      }
+      out += code.slice(cursor, start);
+      cursor = end;
+    }
+    out += code.slice(cursor);
+    return out;
+  } catch {
+    // Fallback for malformed files: keep previous lightweight behavior.
+  }
+
+  return stripCommentsLegacy(code);
+}
+
+function stripCommentsLegacy(code: string): string {
   let out = "";
   let i = 0;
   const len = code.length;
@@ -101,7 +139,6 @@ export function stripComments(code: string): string {
 
     i += 1;
   }
-
   return out;
 }
 
