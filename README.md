@@ -5,6 +5,7 @@ A lightweight tool to remove comments from JavaScript/TypeScript files while pre
 ## Features
 
 ✨ **Smart Comment Removal**
+
 - Removes `//` line comments and `/* */` block comments
 - Preserves comments inside strings, template literals, and regex patterns
 - Handles edge cases like regex literals after `return`, `throw`, etc.
@@ -85,7 +86,7 @@ remove-code-comments --dir src --all --ignore "**/*.test.ts,**/vendor/**"
 Use `remove-code-comments` as a library in your Node.js projects:
 
 ```javascript
-const { stripComments } = require('remove-code-comments');
+const { stripComments } = require("remove-code-comments");
 
 const code = `
   // This is a line comment
@@ -102,9 +103,9 @@ console.log(clean);
 
 ```javascript
 
-  
-  const x = 5; 
-  const regex = /https?:\\/\\//; 
+
+  const x = 5;
+  const regex = /https?:\\/\\//;
   const str = "// not a comment";
 ```
 
@@ -115,17 +116,19 @@ console.log(clean);
 Removes all comments from the provided code string.
 
 **Parameters:**
+
 - `code` (string): JavaScript or TypeScript source code
 
 **Returns:**
+
 - (string): Code with comments removed
 
 **Example:**
 
 ```javascript
-const { stripComments } = require('remove-code-comments');
+const { stripComments } = require("remove-code-comments");
 
-const result = stripComments('const x = 5; // comment');
+const result = stripComments("const x = 5; // comment");
 // result: 'const x = 5; '
 ```
 
@@ -151,11 +154,10 @@ function sayHi() {
 **Output:**
 
 ```javascript
-
-const greeting = "Hello"; 
+const greeting = "Hello";
 
 function sayHi() {
-  return greeting; 
+  return greeting;
 }
 ```
 
@@ -166,15 +168,15 @@ function sayHi() {
 ```javascript
 const url = "https://example.com"; // URL string
 const pattern = /\/\* not a comment \*\//; // regex literal
-const msg = 'Use // for comments'; /* explanation */
+const msg = "Use // for comments"; /* explanation */
 ```
 
 **Output:**
 
 ```javascript
-const url = "https://example.com"; 
-const pattern = /\/\* not a comment \*\//; 
-const msg = 'Use // for comments'; 
+const url = "https://example.com";
+const pattern = /\/\* not a comment \*\//;
+const msg = "Use // for comments";
 ```
 
 ### Example 3: Template Literals
@@ -196,7 +198,7 @@ const code = `
   // This looks like a comment
   /* but it's inside a template */
 `;
-const value = 42; 
+const value = 42;
 ```
 
 ### Example 4: Complex Regex Context
@@ -216,28 +218,12 @@ function test() {
 
 ```javascript
 function test() {
-  return /regex/gi; 
-  throw /pattern/; 
-  const result = condition ? /yes/ : /no/; 
-  const arr = [/first/, /second/]; 
+  return /regex/gi;
+  throw /pattern/;
+  const result = condition ? /yes/ : /no/;
+  const arr = [/first/, /second/];
 }
 ```
-
-## Development
-
-```bash
-npm install
-npm test
-npm run build
-```
-
-### Build Native Module (Optional)
-
-```bash
-npm run build:native
-```
-
-Requires Rust toolchain (`cargo`) to be installed.
 
 ## License
 
