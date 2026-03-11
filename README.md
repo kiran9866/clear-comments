@@ -1,5 +1,10 @@
 # remove-code-comments
 
+[![npm version](https://img.shields.io/npm/v/remove-code-comments.svg)](https://www.npmjs.com/package/remove-code-comments)
+[![npm downloads](https://img.shields.io/npm/dw/remove-code-comments.svg)](https://www.npmjs.com/package/remove-code-comments)
+[![npm monthly downloads](https://img.shields.io/npm/dm/remove-code-comments.svg)](https://www.npmjs.com/package/remove-code-comments)
+[![npm total downloads](https://img.shields.io/npm/dt/remove-code-comments.svg)](https://www.npmjs.com/package/remove-code-comments)
+
 A lightweight tool to remove comments from JavaScript/TypeScript files while preserving strings, regex literals, and template literals. Works as both a CLI and a programmatic library.
 
 ## Features
